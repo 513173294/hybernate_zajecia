@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>Biblioteka filmow</title>
+</head>
+<body>
+
+
+
+<table class="table">
+    <thead>
+    <th>Tytula</th>
+    <th>data premiery</th>
+    <th>Kategoria</th>
+    </thead>
+    <tbody>
+    <tr th:each="movie : ${allMovies}">
+        <td th:text="${movie.title}"></td>
+        <td th:text="${movie.premiereDate}"></td>
+        <td th:text="${movie.category}"></td>
+
+    </tr>
+
+    </tbody>
+
+</table><div class="form-group" label for="exampleFormControlInput1">
+    <form class="form-control" action="addmovie" method="post" th:object="${newMovie}">
+        title <input class="form-control form-control-lg" type="text" th:field="*{title}"><br>
+        category <input class="form-control form-control-lg" type="text" th:field="*{category}"><br>
+        description <input class="form-control form-control-lg" type="text" th:field="*{description}"><br>
+        <!--premiere Date  <select class=“form-control” th:field=“*{category}“>-->
+        <!--<option th:each=“category: ${allCategories}” th:text=“*{category}” th:value=“*{category}“></option>-->
+    <!--</select><br>-->
+        <input class="btn btn-primary" type="submit" value="dodaj">
+    </form>
+</div>
+</body>
+</html>
